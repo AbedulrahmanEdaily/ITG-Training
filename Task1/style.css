@@ -114,9 +114,7 @@ img {
 }
 
 .image2 {
-    overflow: hidden;
     aspect-ratio: 16 / 9;
-    border-radius: 15px;
 }
 .image-main{
     width: 100%;
