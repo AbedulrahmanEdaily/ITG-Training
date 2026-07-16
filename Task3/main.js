@@ -6,7 +6,7 @@ const filterForm = document.getElementById("applyFilter");
 const productModal = document.getElementById("productModal");
 const modalBody = document.getElementById("modalBody");
 const closeModal = document.getElementById("closeModal");
-
+const productCards = document.getElementById("productCards");
 //UI
 function createProduct(product){
         const section = document.createElement("section");
@@ -62,7 +62,6 @@ function createProduct(product){
         return section;
 }
 function renderProducts(products){
-    const productCards = document.getElementById("productCards");
     const fragment = document.createDocumentFragment();
     for (const product of products) {
         fragment.appendChild(createProduct(product));
@@ -253,13 +252,13 @@ selectSort.addEventListener("change",(e)=>{
     updateURL(state);
     refreshProducts();
 });
-document.addEventListener("click", (e) => {
+productCards.addEventListener("click", (e) => {
     if(e.target.closest(".love-btn")){
         e.target.closest(".love-btn").classList.toggle("clicked");
     }
 });
 priceInput.addEventListener("input",()=>{
-    priceValue.textContent = `value: $${priceInput.value}`;
+    priceValue.textContent = `Value: $${priceInput.value}`;
 });
 filterForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -280,7 +279,7 @@ filterForm.addEventListener("submit", (e) => {
     updateURL(state);
     refreshProducts();
 });
-document.addEventListener("click",(e)=>{
+productCards.addEventListener("click",(e)=>{
     const card = e.target.closest(".product");
     if(card && !e.target.closest("button")){
         const id = Number(card.dataset.productId);
