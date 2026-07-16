@@ -1,0 +1,377 @@
+/* Start Global Rules*/
+
+* {
+    padding:0;
+    margin: 0;	
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body,html{
+    width: 100%;
+    height:100%;
+    background-color: #eee;
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width:576px) {
+
+    .container {
+        max-width: 540px
+    }
+}
+
+@media (min-width:768px) {
+
+    .container {
+        max-width: 720px
+    }
+}
+
+@media (min-width:992px) {
+
+    .container {
+        max-width: 960px
+    }
+}
+
+@media (min-width:1200px) {
+
+    .container {
+        max-width: 1140px
+    }
+}
+
+@media (min-width:1400px) {
+
+    .container {
+        max-width: 1320px
+    }
+}
+
+
+ul{
+    list-style: none;
+}
+
+/* End Global Rules*/
+
+/* Start Header */
+
+header{
+    margin-top: 120px;
+}
+header .container{
+    display: flex;
+    /* width: 100%; */
+    align-items: center;
+    justify-content: space-between;
+}
+header .container .sort{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:15px
+}
+header .container .sort p{
+    font-size: 18px;
+}
+header .container select{
+    border:none;
+    outline: none;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 8px;
+    padding:5px;
+
+}
+
+/* End Header */
+
+/* Start sidebar */
+
+main .container{
+    margin-top: 24px;
+    display: flex;
+    gap:20px;
+    align-items: flex-start;
+}
+main .container aside{
+    padding:15px;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    min-width: 250px;
+}
+main .container aside form{
+    display: flex;
+    flex-direction: column;
+}
+main .container aside form section{
+    border-bottom: 1px solid #EEE;
+    padding:10px;
+}
+
+/* Start Categories */
+main .container aside form .categories h3{
+    margin-bottom: 10px;
+}
+main .container aside form .categories .category{
+    padding: 5px 10px;
+}
+
+/* Start Price Range*/
+main .container aside form .price-range .range input{
+    width: 100%;
+    margin-top: 10px;
+}
+main .container aside form .price-range .price{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color:gray
+}
+
+/* Start Colors*/
+
+main .container aside form .colors .buttons{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap:6px;
+}
+main .container aside form .colors .buttons input{
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    
+}
+
+main .container aside form .colors .buttons input:checked {
+    outline: 2px solid #2563eb;
+    border:2px solid white;
+}
+
+main .container aside form .colors .buttons .red{
+    background-color: red;
+}
+main .container aside form .colors .buttons .black{
+    background-color: black;
+}
+main .container aside form .colors .buttons .green{
+    background-color: green;
+}
+main .container aside form .colors .buttons .blue{
+    background-color: blue;
+}
+
+/* Start ratings*/
+main .container aside form .rating h3{
+    margin-bottom: 10px;
+}
+main .container aside form .rating .rate{
+    padding: 5px 10px;
+}
+main .container aside form .rating .rate input{
+    display: none;
+}
+main .container aside form .rating .rate i {
+    color: #ccc;
+    cursor: pointer;
+}
+main .container aside form .rating .rate input:checked + i {
+    color: gold;
+    font-weight: 900;
+}
+
+/* Start Button */
+
+main .container aside form .apply-btn{
+    background-color: white;
+    border:2px solid #0075ff;
+    padding: 10px 0;
+    border-radius: 8px;
+    color:#0075ff;
+    font-weight:bold;
+    transition:0.4s;
+    cursor: pointer;
+}
+main .container aside form .apply-btn:hover{
+    background-color:#0075ff ;
+    color:white;
+}
+
+/* End sidebar */
+
+/* Start Modal */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal.show {
+    display: flex;
+}
+.modal-content {
+    width: min(700px, 90%);
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    position: relative;
+}
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+}
+.modal-product {
+    display: flex;
+    gap: 25px;
+}
+.modal-product img {
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+.modal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.modal-info h2 {
+    margin: 0;
+}
+.modal-info .rating .stars{
+    color:gold;
+}
+.modal-info .rating p{
+    color:gray;
+}
+.modal-category {
+    color: #777;
+    background-color: #eee;
+    width: fit-content;
+    padding: 5px 15px;
+    border-radius: 8px;
+}
+.modal-price {
+    font-size: 22px;
+    font-weight: bold;
+    color:#0075ff
+}
+.modal-description {
+    line-height: 1.5;
+}
+.add-cart-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+/* End Modal */
+
+/* Start Product Cards */
+main .productCards{
+    display: flex;
+    gap:20px;
+    flex-wrap: wrap;
+}
+main .productCards .product{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+}
+main .productCards .product .love-btn{
+    position: absolute;
+    top:10px;
+    left:10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border:none;
+    cursor: pointer;
+    transition:0.4s;
+}
+main .productCards .product .sale{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding:5px 10px;
+    background-color: red;
+    color: white;
+    border-radius: 8px;
+}
+main .productCards .product .clicked{
+    background-color: red;
+    color:white;
+}
+main .productCards .product .information{
+    padding:15px
+}
+main .productCards .product .information .category{
+    background-color: #eee;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color:gray;
+    margin-bottom: 10px;
+}
+main .productCards .product .information h3{
+    margin-bottom: 10px;
+}
+main .productCards .product .information .rating{
+    display: flex;
+    gap:10px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+main .productCards .product .information .rating .stars i{
+    color:gold
+}
+main .productCards .product .information .rating p{
+    color: gray;
+}
+main .productCards .product .information .price{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+main .productCards .product .information .price p{
+    color: #0075ff;
+    font-size: 18px;
+}
+main .productCards .product .information .price button{
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    color: white;
+    background-color: #0075ff;
+    border-radius: 5px;
+    transition: 0.4s;
+}
+main .productCards .product .information .price button:hover{
+    background-color: #12398f;
+}
+/* End Product Cards */
