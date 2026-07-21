@@ -1,3 +1,4 @@
+import { products, getProducts } from "./data.js";
 //DOM Elements
 const priceValue = document.getElementById("priceValue");
 const priceInput= document.getElementById("price");

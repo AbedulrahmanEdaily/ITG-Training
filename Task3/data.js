@@ -1,4 +1,4 @@
-const products = [
+export const products = [
   {
     id: 1,
     name: "Wireless Headphones",
@@ -111,6 +111,6 @@ const products = [
   }
 ];
 
-function getProducts(callback){
+export function getProducts(callback){
     callback([...products]);
 }
