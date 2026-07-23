@@ -430,4 +430,43 @@ main .productCards .product .information .price button:hover {
     background-color: #12398f;
 }
 
+/* Product Actions */
+
+main .productCards .product .information .actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+main .productCards .product .information .actions button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: .3s;
+}
+
+main .productCards .product .information .actions .edit-btn {
+    background: #0075ff;
+    color: white;
+}
+
+main .productCards .product .information .actions .edit-btn:hover {
+    background: #0056d2;
+}
+
+main .productCards .product .information .actions .delete-btn {
+    background: #dc3545;
+    color: white;
+}
+
+main .productCards .product .information .actions .delete-btn:hover {
+    background: #b91c1c;
+}
+
+main .productCards .product .information .actions button i {
+    margin-right: 6px;
+}
 /* End Product Cards */

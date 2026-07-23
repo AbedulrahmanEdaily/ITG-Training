@@ -1,4 +1,4 @@
-import { getProducts } from "./data.js";
+import { deleteProduct, getProducts } from "./data.js";
 
 //DOM Elements
 const priceValue = document.getElementById("priceValue");
@@ -13,57 +13,76 @@ const productCards = document.getElementById("productCards");
 let products = [];
 //UI
 function createProduct(product){
-        const section = document.createElement("section");
-        section.className = "product";
-        const button = document.createElement("button");
-        section.dataset.productId = product.id;
-        button.className = "love-btn";
-        button.type="button";
-        button.ariaLabel="Add to wishlist";
-        const loveIcon=document.createElement("i");
-        loveIcon.className="fa-regular fa-heart"
-        button.appendChild(loveIcon);
-        if(product.discount>0){
-            const discount = document.createElement("p");
-            discount.className = "sale"
-            discount.textContent = `-${product.discount}$`
-            section.appendChild(discount);
-        }
-        const image = document.createElement("img");
-        image.src=`${product.image}`;
-        image.alt=`${product.name} image`;
-        const information = document.createElement("div");
-        information.className = "information";
-        const category = document.createElement("p");
-        category.className= "category";
-        category.textContent=`${product.category}`;
-        const name = document.createElement("h3");
-        name.textContent = `${product.name}`;
-        const rating = document.createElement("div");
-        rating.className="rating";
-        rating.appendChild(renderStars(product.rating));
-        const ratingNumber= document.createElement("p");
-        ratingNumber.textContent=`(${product.rating})`;
-        rating.appendChild(ratingNumber);
-        const price = document.createElement("div");
-        price.className="price";
-        const priceNumber=document.createElement("p");
-        priceNumber.textContent=`${(product.price - product.discount).toFixed(2)}`;
-        price.appendChild(priceNumber);
-        const addToCart= document.createElement("button");
-        addToCart.type="button";
-        addToCart.ariaLabel="Add to cart";
-        const cartIcon= document.createElement("i");
-        cartIcon.className="fa-solid fa-cart-shopping";
-        addToCart.appendChild(cartIcon);
-        price.appendChild(addToCart);
-        information.append(
-            category,
-            name,
-            rating,
-            price);
-        section.append(button,image,information);
-        return section;
+    const section = document.createElement("section");
+    section.className = "product";
+    const button = document.createElement("button");
+    section.dataset.productId = product.id;
+    button.className = "love-btn";
+    button.type="button";
+    button.ariaLabel="Add to wishlist";
+    const loveIcon=document.createElement("i");
+    loveIcon.className="fa-regular fa-heart"
+    button.appendChild(loveIcon);
+    if(product.discount>0){
+        const discount = document.createElement("p");
+        discount.className = "sale"
+    discount.textContent = `-${product.discount}$`
+    section.appendChild(discount);
+    }
+    const image = document.createElement("img");
+    image.src=`${product.image}`;
+    image.alt=`${product.name} image`;
+    const information = document.createElement("div");
+    information.className = "information";
+    const category = document.createElement("p");
+    category.className= "category";
+    category.textContent=`${product.category}`;
+    const name = document.createElement("h3");
+    name.textContent = `${product.name}`;
+    const rating = document.createElement("div");
+    rating.className="rating";
+    rating.appendChild(renderStars(product.rating));
+    const ratingNumber= document.createElement("p");
+    ratingNumber.textContent=`(${product.rating})`;
+    rating.appendChild(ratingNumber);
+    const price = document.createElement("div");
+    price.className="price";
+    const priceNumber=document.createElement("p");
+    priceNumber.textContent=`${(product.price - product.discount).toFixed(2)}`;
+    price.appendChild(priceNumber);
+    const addToCart= document.createElement("button");
+    addToCart.type="button";
+    addToCart.ariaLabel="Add to cart";
+    const cartIcon= document.createElement("i");
+    cartIcon.className="fa-solid fa-cart-shopping";
+    addToCart.appendChild(cartIcon);
+    price.appendChild(addToCart);
+    const actions = document.createElement("div");
+    actions.className = "actions";
+    const editBtn = document.createElement("button");
+    editBtn.className = "edit-btn";
+    editBtn.type = "button";
+    editBtn.dataset.productId = product.id;
+    const editIcon = document.createElement("i");
+    editIcon.className = "fa-solid fa-pen";
+    editBtn.append(editIcon, " Edit");
+    const deleteBtn = document.createElement("button");
+    deleteBtn.className = "delete-btn";
+    deleteBtn.type = "button";
+    deleteBtn.dataset.productId = product.id;
+    const deleteIcon = document.createElement("i");
+    deleteIcon.className = "fa-solid fa-trash";
+    deleteBtn.append(deleteIcon, " Delete");
+    actions.append(editBtn, deleteBtn);
+    information.append(
+        category,
+        name,
+        rating,
+        price,
+        actions
+    );
+    section.append(button,image,information);
+    return section;
 }
 function renderProducts(products){
     const fragment = document.createDocumentFragment();
@@ -210,15 +229,12 @@ function sortProducts(result,sortBy){
     if (sortBy === "lowPrice") {
         result.sort((a, b) => (a.price - a.discount) - (b.price - b.discount));
     }
-
     if (sortBy === "highPrice") {
         result.sort((a, b) => (b.price - b.discount) - (a.price - a.discount));
     }
-
     if (sortBy === "rating") {
         result.sort((a, b) => b.rating - a.rating);
     }
-
     if (sortBy === "category") {
         result.sort((a, b) => a.category.localeCompare(b.category));
     }
@@ -290,22 +306,33 @@ productCards.addEventListener("click",(e)=>{
             openModal(product);
         }
 }
-
+});
+document.addEventListener("click", async (e) => {
+    const deleteBtn = e.target.closest(".delete-btn");
+    if (!deleteBtn) return;
+    const id = deleteBtn.dataset.productId;
+    if (!confirm("Delete this product?")) return;
+    await deleteProduct(id);
+});
+document.addEventListener("click", (e) => {
+    const editBtn = e.target.closest(".edit-btn");
+    if(!editBtn) return;
+    const id = editBtn.dataset.productId;
+    window.location.href = `createProduct.html?id=${id}`;
 });
 closeModal.addEventListener("click",()=>{
     productModal.classList.remove("show");
 });
 //Init
-async function init(){
-
-    productCards.innerHTML = `
-        <p>Loading products...</p>
-    `;
-
-    products = await getProducts();
-
-    syncFormWithState(state);
-    refreshProducts();
+function init(){
+    const loading=document.createElement("p");
+    loading.textContent="Loading products...";
+    productCards.replaceChildren(loading);
+    getProducts((data)=>{
+        products=data;
+        syncFormWithState(state);
+        refreshProducts();
+    });
 }
 
 init();
