@@ -1,0 +1,220 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:#eee;
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+
+.container{
+
+    width:min(1100px,90%);
+    margin:auto;
+
+}
+
+header{
+
+    margin-top:80px;
+
+}
+
+header .container{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+.back-btn{
+
+    text-decoration:none;
+    background:#0075ff;
+    color:white;
+
+    padding:12px 18px;
+
+    border-radius:8px;
+
+    display:flex;
+    gap:8px;
+
+    align-items:center;
+
+    transition:.3s;
+
+}
+
+.back-btn:hover{
+
+    background:#1254d4;
+
+}
+
+main{
+
+    margin-top:30px;
+
+}
+
+form{
+
+    background:white;
+
+    border-radius:16px;
+
+    padding:30px;
+
+    display:flex;
+
+    gap:40px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+}
+
+.image-preview{
+
+    width:40%;
+
+}
+
+.image-preview img{
+
+    width:100%;
+
+    border-radius:12px;
+
+}
+.image-preview .error{
+    color: red;
+    margin-top: 15px;
+    font-size: 12px;
+}
+.fields{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.field{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.field label{
+
+    font-weight:bold;
+
+}
+
+input,
+select,
+textarea{
+
+    padding:12px;
+
+    border:1px solid #ddd;
+
+    border-radius:8px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+
+    border-color:#0075ff;
+
+}
+
+.row{
+
+    display:flex;
+
+    gap:20px;
+
+}
+
+.row .field{
+
+    flex:1;
+
+}
+
+textarea{
+
+    resize:vertical;
+
+}
+
+.submit-btn{
+
+    margin-top:10px;
+
+    border:none;
+
+    background:#0075ff;
+
+    color:white;
+
+    font-size:16px;
+
+    padding:15px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.submit-btn:hover{
+
+    background:#1254d4;
+
+}
+
+@media(max-width:900px){
+
+form{
+
+    flex-direction:column;
+
+}
+
+.image-preview{
+
+    width:100%;
+
+}
+
+.row{
+
+    flex-direction:column;
+
+}
+
+}
