@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="This is product listing page">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Product Listing</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Product Collection</h1>
+            <div class="sort"> <label for="sort">Sort By:</label> <select name="sorting by" id="sort">
+                    <option value="newest">Newest</option>
+                    <option value="lowPrice">Price: Low To High</option>
+                    <option value="highPrice">Price: High To Low</option>
+                    <option value="category">Category</option>
+                    <option value="rating">Rating</option>
+                </select> <a href="createProduct.html" class="create-btn"> <i class="fa-solid fa-plus"></i> Create
+                    Product </a> </div>
+        </div>
+    </header>
+    <main>
+        <div id="productModal" class="modal">
+            <div class="modal-content"> <button id="closeModal" class="close-btn"> <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div id="modalBody" class="modal-body"> </div>
+            </div>
+        </div>
+        <div class="container">
+            <aside>
+                <form id="applyFilter">
+                    <section class="categories">
+                        <h3>Categories</h3>
+                        <div class="category"> <input id="electronics" value="electronics" type="checkbox"> <label
+                                for="electronics"> Electronics </label> </div>
+                        <div class="category"> <input id="clothing" value="clothing" type="checkbox"> <label
+                                for="clothing"> Clothing </label> </div>
+                        <div class="category"> <input id="accessories" value="accessories" type="checkbox"> <label
+                                for="accessories"> Accessories </label> </div>
+                    </section>
+                    <section class="price-range">
+                        <div class="range"> <label for="price">Price Range</label> <input id="price" type="range"
+                                value="500" min="0" max="1000"> </div>
+                        <div class="price">
+                            <p>$0</p>
+                            <p id="priceValue">value: $500</p>
+                            <p>$1000</p>
+                        </div>
+                    </section>
+                    <section class="colors">
+                        <h3>Colors</h3>
+                        <div class="buttons"> <input type="radio" value="black" name="colors" class="black"></input>
+                            <input type="radio" value="red" name="colors" class="red"></input> <input type="radio"
+                                value="blue" name="colors" class="blue"></input> <input type="radio" value="green"
+                                name="colors" class="green"></input> </div>
+                    </section>
+                    <section class="rating">
+                        <h3>Rating</h3>
+                        <div class="rate"> <label for="for-above"> <input id="for-above" value="4" type="radio"
+                                    name="rating"> <i class="fa-regular fa-star"></i> 4 & above </label> </div>
+                        <div class="rate"> <label for="three-above"> <input id="three-above" value="3" type="radio"
+                                    name="rating"> <i class="fa-regular fa-star"></i> 3 & above </label> </div>
+                    </section> <button class="apply-btn" type="submit"> Apply Filters </button>
+                </form>
+            </aside>
+            <section id="productCards" class="productCards">
+                <section class="product"> <button class="love-btn" type="button" aria-label="Add to wishlist"> <i
+                            class="fa-regular fa-heart"></i> </button> <img src="https://placehold.co/300x200"
+                        alt="ProductImage">
+                    <div class="information">
+                        <p class="category">Electronics</p>
+                        <h3>Wireless Headphones</h3>
+                        <div class="rating">
+                            <div class="stars"> <i class="fa-solid fa-star"></i> <i class="fa-regular fa-star"></i> <i
+                                    class="fa-regular fa-star"></i> <i class="fa-regular fa-star"></i> <i
+                                    class="fa-solid fa-star-half-stroke"></i> </div>
+                            <p>(4.5)</p>
+                        </div>
+                        <div class="price">
+                            <p>$129.99</p> <button type="button" aria-label="Add to cart"> <i
+                                    class="fa-solid fa-cart-shopping"></i> </button>
+                        </div>
+                    </div>
+                </section>
+                <section class="product"> <button class="love-btn" type="button" aria-label="Add to wishlist"> <i
+                            class="fa-regular fa-heart"></i> </button> <img src="https://placehold.co/300x200"
+                        alt="ProductImage">
+                    <div class="information">
+                        <p class="category">Electronics</p>
+                        <h3>Wireless Headphones</h3>
+                        <div class="rating">
+                            <div class="stars"> <i class="fa-solid fa-star"></i> <i class="fa-regular fa-star"></i> <i
+                                    class="fa-regular fa-star"></i> <i class="fa-regular fa-star"></i> <i
+                                    class="fa-solid fa-star-half-stroke"></i> </div>
+                            <p>(4.5)</p>
+                        </div>
+                        <div class="price">
+                            <p>$129.99</p> <button type="button" aria-label="Add to cart"> <i
+                                    class="fa-solid fa-cart-shopping"></i> </button>
+                        </div>
+                    </div>
+                </section>
+                <section class="product"> <button class="love-btn" type="button" aria-label="Add to wishlist"> <i
+                            class="fa-regular fa-heart"></i> </button>
+                    <p class="sale">-20%</p> <img src="https://placehold.co/300x200" alt="ProductImage">
+                    <div class="information">
+                        <p class="category">Electronics</p>
+                        <h3>Wireless Headphones</h3>
+                        <div class="rating">
+                            <div class="stars"> <i class="fa-solid fa-star"></i> <i class="fa-regular fa-star"></i> <i
+                                    class="fa-regular fa-star"></i> <i class="fa-regular fa-star"></i> <i
+                                    class="fa-solid fa-star-half-stroke"></i> </div>
+                            <p>(4.5)</p>
+                        </div>
+                        <div class="price">
+                            <p>$129.99</p> <button type="button" aria-label="Add to cart"> <i
+                                    class="fa-solid fa-cart-shopping"></i> </button>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </main>
+    <script type="module" src="src/js/main.js"></script>
+</body>
+
+</html>
