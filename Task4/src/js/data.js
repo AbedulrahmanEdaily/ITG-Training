@@ -1,4 +1,4 @@
-import { collection, deleteDoc, doc, getDocs,updateDoc,getDoc,onSnapshot } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs,updateDoc,getDoc,onSnapshot,addDoc } from "firebase/firestore";
 import { db } from "./firebase.js";
 
 export function getProducts(callback){
@@ -47,6 +47,24 @@ export async function updateProduct(id,product){
     }
     catch(error){
         console.error(error);
+        return false;
+    }
+}
+export async function storeProduct(product){
+    try{
+        await addDoc(collection(db,"products"),{
+            name:product.name,
+            image:product.image,
+            category:product.category,
+            color:product.color,
+            rating:product.rating,
+            price:product.price,
+            discount:product.discount,
+            description:product.description
+        });
+        return true;
+    }catch(error){
+        console.error("Error adding product:",error);
         return false;
     }
 }

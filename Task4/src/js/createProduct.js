@@ -1,6 +1,5 @@
-import{addDoc,collection,doc,updateDoc}from"firebase/firestore";
 import{db}from"./firebase.js";
-import{getProductById,updateProduct }from"./data.js";
+import{getProductById,updateProduct,storeProduct }from"./data.js";
 
 const form=document.getElementById("createProductForm");
 const imageInput=document.getElementById("image");
@@ -21,24 +20,7 @@ async function handleCreateProduct(form){
     return result;
 }
 
-async function storeProduct(product){
-    try{
-        await addDoc(collection(db,"products"),{
-            name:product.name,
-            image:product.image,
-            category:product.category,
-            color:product.color,
-            rating:product.rating,
-            price:product.price,
-            discount:product.discount,
-            description:product.description
-        });
-        return true;
-    }catch(error){
-        console.error("Error adding product:",error);
-        return false;
-    }
-}
+
 
 async function loadProductForEdit(){
     if(!productId)return;
