@@ -4,23 +4,20 @@ import{getProductById,updateProduct,storeProduct }from"./data.js";
 const form=document.getElementById("createProductForm");
 const imageInput=document.getElementById("image");
 const imagePreview=document.getElementById("previewImage");
-
 const params=new URLSearchParams(location.search);
 const productId=params.get("id");
 
-async function handleCreateProduct(form){
+async function handleProduct(form,id){
     const product=createProduct(form);
     if(!validateProduct(product))return false;
     let result;
-    if(productId){
-        result=await updateProduct(productId,product);
+    if(id){
+        result=await updateProduct(id,product);
     }else{
         result=await storeProduct(product);
     }
     return result;
 }
-
-
 
 async function loadProductForEdit(){
     if(!productId)return;
@@ -127,7 +124,7 @@ imageInput.addEventListener("input",()=>{
 
 form.addEventListener("submit",async(e)=>{
     e.preventDefault();
-    const success=await handleCreateProduct(form);
+    const success=await handleProduct(form,productId);
     if(success){
         window.location.href="index.html";
     }
